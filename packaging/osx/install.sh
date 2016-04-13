@@ -47,7 +47,7 @@ else
     dd_url = "http://localhost:2001/"
 fi
 
-$dd_url = echo $dd_url | sed -i '' -e "s/\//\\\\\//g"
+#$dd_url = echo $dd_url | sed -i '' -e "s/\//\\\\\//g"
 
 # Install the agent
 printf "\033[34m\n* Downloading datadog-agent\n\033[0m"
@@ -66,7 +66,7 @@ $sudo_cmd hdiutil detach "/Volumes/datadog_agent" >/dev/null
 if egrep 'api_key:( APIKEY)?$' "/opt/datadog-agent/etc/datadog.conf" > /dev/null 2>&1; then
     printf "\033[34m\n* Adding your API key and dd_url to the Agent configuration: datadog.conf\n\033[0m\n"
     $sudo_cmd sh -c "sed -i '' 's/api_key:.*/api_key: $apikey/g' \"/opt/datadog-agent/etc/datadog.conf\""
-    $sudo_cmd sh -c "sed -i '' 's/dd_url:.*/dd_url: $dd_url/g' \"/opt/datadog-agent/etc/datadog.conf\""
+    $sudo_cmd sh -c "sed -i '' 's,dd_url:.*,dd_url: $dd_url,g' \"/opt/datadog-agent/etc/datadog.conf\""
     $sudo_cmd chown $real_user:admin "/opt/datadog-agent/etc/datadog.conf"
     $sudo_cmd chmod 640 /opt/datadog-agent/etc/datadog.conf
     printf "\033[34m* Restarting the Agent...\n\033[0m\n"
