@@ -47,8 +47,6 @@ else
     dd_url="http://localhost:2001/"
 fi
 
-#$dd_url=echo $dd_url | sed -i '' -e "s/\//\\\\\//g"
-
 # Install the agent
 printf "\033[34m\n* Downloading datadog-agent\n\033[0m"
 rm -f $dmg_file

@@ -166,7 +166,7 @@ if [ -e /etc/dd-agent/datadog.conf ]; then
     printf "\033[34m\n* Keeping old datadog.conf configuration file\n\033[0m\n"
 else
     printf "\033[34m\n* Adding your API key to the Agent configuration: /etc/dd-agent/datadog.conf\n\033[0m\n"
-    $sudo_cmd sh -c "sed -e 's/api_key:.*/api_key: $apikey/g' -e 's/dd_url:.*/dd_url: $dd_url/g' /etc/dd-agent/datadog.conf.example > /etc/dd-agent/datadog.conf"
+    $sudo_cmd sh -c "sed -e 's/api_key:.*/api_key: $apikey/g' -e 's,dd_url:.*,dd_url: $dd_url,g' /etc/dd-agent/datadog.conf.example > /etc/dd-agent/datadog.conf"
     if [ $dd_hostname ]; then
         printf "\033[34m\n* Adding your HOSTNAME to the Agent configuration: /etc/dd-agent/datadog.conf\n\033[0m\n"
         $sudo_cmd sh -c "sed -i 's/#hostname:.*/hostname: $dd_hostname/' /etc/dd-agent/datadog.conf"
