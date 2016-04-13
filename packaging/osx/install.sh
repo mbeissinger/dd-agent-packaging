@@ -36,18 +36,18 @@ solve your problem.\n\033[0m\n"
 trap on_error ERR
 
 if [ -n "$DD_API_KEY" ]; then
-    apikey = $DD_API_KEY
+    apikey=$DD_API_KEY
 else
-    apikey = "netsil"
+    apikey="netsil"
 fi
 
 if [ -n "$DD_URL" ]; then
-    dd_url = $DD_URL
+    dd_url=$DD_URL
 else
-    dd_url = "http://localhost:2001/"
+    dd_url="http://localhost:2001/"
 fi
 
-#$dd_url = echo $dd_url | sed -i '' -e "s/\//\\\\\//g"
+#$dd_url=echo $dd_url | sed -i '' -e "s/\//\\\\\//g"
 
 # Install the agent
 printf "\033[34m\n* Downloading datadog-agent\n\033[0m"
